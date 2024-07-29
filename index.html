@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Layout</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            background-image: url('bakcc.jpeg'); /* Tambahkan URL gambar Anda di sini */
+            background-size: cover; /* Menyesuaikan ukuran gambar agar menutupi seluruh halaman */
+            background-position: center; /* Memposisikan gambar di tengah */
+            background-repeat: no-repeat; /* Menghentikan pengulangan gambar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Menutupi seluruh tinggi layar */
+            box-sizing: border-box;
+        }
+
+        .container-fluid {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8); /* Membuat latar belakang semi-transparan */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        .form-title {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        form {
+            display: contents;
+        }
+
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* Membuat setiap .form-group fleksibel */
+            margin-right: 20px; /* Menambahkan jarak antar kolom */
+        }
+
+        /* Menghapus margin kanan pada form-group terakhir di dalam form-row */
+        .form-row .form-group:last-child {
+            margin-right: 0;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="date"] {
+            max-width: 200px;
+        }
+
+        .form-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap; /* Membungkus checkbox ke baris berikutnya jika tidak muat di satu baris */
+            gap: 10px; /* Jarak antara checkbox */
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px; /* Jarak antara checkbox dan label */
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-btn button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit-btn button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .container-fluid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="form-title">Form Pendaftaran</div>
+        <form id="registrationForm">
+            <div class="left-column">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="marga">Marga</label>
+                        <input type="text" id="marga" name="marga" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nik">NIM</label>
+                    <input type="text" id="nik" name="nik" required>
+                </div>
+                <div class="form-group">
+                    <label for="jenis-kelamin">Jenis Kelamin</label>
+                    <div class="radio-group">
+                        <input type="radio" id="laki-laki" name="jenis-kelamin" value="laki-laki" required>
+                        <label for="laki-laki">Laki-laki</label>
+                        <input type="radio" id="perempuan" name="jenis-kelamin" value="perempuan" required>
+                        <label for="perempuan">Perempuan</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ttl">TTL</label>
+                    <input type="date" id="ttl" name="ttl" required>
+                </div>
+                <div class="form-group">
+                    <label for="jurusan">Jurusan Dipilih</label>
+                    <select id="jurusan" name="jurusan" required>
+                        <option value="" disabled selected>Pilih Jurusan</option>
+                        <option value="jurusan1">D3 MANAJEMEN INFORMATIKA</option>
+                        <option value="jurusan2">D3 TEKNIK SIPIL</option>
+                        <option value="jurusan3">D3 PERMESINAN</option>
+                        <option value="jurusan4">D3 AGRO INDUSTRI</option>
+                        <option value="jurusan5">D3 LISTRIK</option>
+                        <option value="jurusan6">D4 AKUTANSI SEKTOR PUBLIK</option>
+                        <option value="jurusan7">D4 TEKNIK REKAYASA JALAN DAN JEMBATAN</option>
+                    </select>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <textarea id="alamat" name="alamat" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="hobi">Hobi</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="membaca" name="hobi" value="membaca">
+                        <label for="membaca">Membaca</label>
+                        <input type="checkbox" id="menulis" name="hobi" value="menulis">
+                        <label for="menulis">Menulis</label>
+                        <input type="checkbox" id="olahraga" name="hobi" value="olahraga">
+                        <label for="olahraga">Olahraga</label>
+                        <input type="checkbox" id="musik" name="hobi" value="musik">
+                        <label for="musik">Musik</label>
+                        <input type="checkbox" id="renang" name="hobi" value="renang">
+                        <label for="renang">Renang</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="asal-sekolah">Asal Sekolah</label>
+                    <input type="text" id="asal-sekolah" name="asal-sekolah" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="submit-btn">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            let valid = true;
+            const requiredFields = document.querySelectorAll('#registrationForm [required]');
+
+            requiredFields.forEach(function(field) {
+                if (!field.value) {
+                    valid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '#ccc';
+                }
+            });
+
+            if (!valid) {
+                alert('Harap isi semua informasi yang diperlukan.');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
